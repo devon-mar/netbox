@@ -646,7 +646,7 @@ class VMInterfaceForm(BootstrapMixin, InterfaceCommonForm, CustomFieldModelForm)
         vm_id = self.initial.get('virtual_machine') or self.data.get('virtual_machine')
 
         # Restrict parent interface assignment by VM
-        self.fields['parent'].widget.add_query_param('virtualmachine_id', vm_id)
+        self.fields['parent'].widget.add_query_param('virtual_machine_id', vm_id)
 
         # Limit VLAN choices by virtual machine
         self.fields['untagged_vlan'].widget.add_query_param('available_on_virtualmachine', vm_id)
@@ -669,7 +669,7 @@ class VMInterfaceCreateForm(BootstrapMixin, InterfaceCommonForm):
         required=False,
         display_field='display_name',
         query_params={
-            'virtualmachine_id': 'virtual_machine',
+            'virtual_machine_id': 'virtual_machine',
         }
     )
     mtu = forms.IntegerField(
@@ -713,7 +713,7 @@ class VMInterfaceCreateForm(BootstrapMixin, InterfaceCommonForm):
         vm_id = self.initial.get('virtual_machine') or self.data.get('virtual_machine')
 
         # Restrict parent interface assignment by VM
-        self.fields['parent'].widget.add_query_param('virtualmachine_id', vm_id)
+        self.fields['parent'].widget.add_query_param('virtual_machine_id', vm_id)
 
         # Limit VLAN choices by virtual machine
         self.fields['untagged_vlan'].widget.add_query_param('available_on_virtualmachine', vm_id)
@@ -798,7 +798,7 @@ class VMInterfaceBulkEditForm(BootstrapMixin, AddRemoveTagsForm, BulkEditForm):
             vm_id = self.initial.get('virtual_machine')
 
             # Restrict parent interface assignment by VM
-            self.fields['parent'].widget.add_query_param('virtualmachine_id', vm_id)
+            self.fields['parent'].widget.add_query_param('virtual_machine_id', vm_id)
 
             # Limit VLAN choices by virtual machine
             self.fields['untagged_vlan'].widget.add_query_param('available_on_virtualmachine', vm_id)
